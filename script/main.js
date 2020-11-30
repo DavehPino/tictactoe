@@ -1,8 +1,9 @@
 $(document).ready(function(){
-    //setTimeout(function(){alert('Para jugar presiona Play')},500);
+    setTimeout(function(){alert('Para jugar presiona Play')},500);
     const play = $('#play');
     const restart = $('#restart');
     const draw = $('#draw');
+    const p = $('#historial');
     const grid = $('.grilla');
     const grid2 = $('.grilla2');
     const grid3 = $('.grilla3');
@@ -97,7 +98,7 @@ $(document).ready(function(){
         {
             player2 = prompt('Nombre player 2');
         }
-        alert('JUEGO INICIADO\nNORMAS: EMPIEZA '+player+' \nEL PRIMER JUGADOR EN COMPLETAR UNA LINEA GANA\n\n                                             EMPEZAMOS!!');
+        alert('JUEGO INICIADO\nEMPIEZA '+player+' \n\n                                             EMPEZAMOS!!');
         gridArr.forEach((e)=>{
                 e.addClass('square');
         });
@@ -355,6 +356,7 @@ $(document).ready(function(){
                         gridArr.forEach((e)=>{
                             e.removeClass('square');
                         })
+                        p.append(`Ganó <b>${player}</b><br>`);
                         playing = false;
                     }
                     else if(pointa[1] == true && pointa[4] == true && pointa[7] ==true)
@@ -364,6 +366,7 @@ $(document).ready(function(){
                         gridArr.forEach((e)=>{
                             e.removeClass('square');
                         })
+                        p.append(`Ganó <b>${player}</b><br>`);
                         playing = false;
                     }
                     else if(pointa[2] == true && pointa[5] == true && pointa[8] ==true)
@@ -373,6 +376,7 @@ $(document).ready(function(){
                         gridArr.forEach((e)=>{
                             e.removeClass('square');
                         })
+                        p.append(`Ganó <b>${player}</b><br>`);
                         playing = false;
                     }
                     else if(pointa[3] == true && pointa[4] == true && pointa[5] ==true)
@@ -382,6 +386,7 @@ $(document).ready(function(){
                         gridArr.forEach((e)=>{
                             e.removeClass('square');
                         })
+                        p.append(`Ganó <b>${player}</b><br>`);
                         playing = false;
                     }
                     else if(pointa[6] == true && pointa[7] == true && pointa[8] ==true)
@@ -391,6 +396,7 @@ $(document).ready(function(){
                         gridArr.forEach((e)=>{
                             e.removeClass('square');
                         })
+                        p.append(`Ganó <b>${player}</b><br>`);
                         playing = false;
                     }
                     else if(pointa[0] == true && pointa[1] == true && pointa[2] ==true)
@@ -400,6 +406,7 @@ $(document).ready(function(){
                         gridArr.forEach((e)=>{
                             e.removeClass('square');
                         })
+                        p.append(`Ganó <b>${player}</b><br>`);
                         playing = false;
                     }
                     else if(pointa[0] == true && pointa[4] == true && pointa[8] ==true)
@@ -409,6 +416,7 @@ $(document).ready(function(){
                         gridArr.forEach((e)=>{
                             e.removeClass('square');
                         })
+                        p.append(`Ganó <b>${player}</b><br>`);
                         playing = false;
                     }
                     else if(pointa[2] == true && pointa[4] == true && pointa[6] ==true)
@@ -418,6 +426,7 @@ $(document).ready(function(){
                         gridArr.forEach((e)=>{
                             e.removeClass('square');
                         })
+                        p.append(`Ganó <b>${player}</b><br>`);
                         playing = false;
                     }
                     else if(pointb[0] == true && pointb[3] == true && pointb[6] == true)
@@ -427,6 +436,7 @@ $(document).ready(function(){
                         gridArr.forEach((e)=>{
                             e.removeClass('square');
                         })
+                        p.append(`Ganó <b>${player2}</b><br>`);
                         playing = false;
                     }
                     else if(pointb[1] == true && pointb[4] == true && pointb[7] ==true)
@@ -436,6 +446,7 @@ $(document).ready(function(){
                         gridArr.forEach((e)=>{
                             e.removeClass('square');
                         })
+                        p.append(`Ganó <b>${player2}</b><br>`);
                         playing = false;
                     }
                     else if(pointb[2] == true && pointb[5] == true && pointb[8] ==true)
@@ -445,6 +456,7 @@ $(document).ready(function(){
                         gridArr.forEach((e)=>{
                             e.removeClass('square');
                         })
+                        p.append(`Ganó <b>${player2}</b><br>`);
                         playing = false;
                     }
                     else if(pointb[3] == true && pointb[4] == true && pointb[5] ==true)
@@ -454,6 +466,7 @@ $(document).ready(function(){
                         gridArr.forEach((e)=>{
                             e.removeClass('square');
                         })
+                        p.append(`Ganó <b>${player2}</b><br>`);
                         playing = false;
                     }
                     else if(pointb[6] == true && pointb[7] == true && pointb[8] ==true)
@@ -463,6 +476,7 @@ $(document).ready(function(){
                         gridArr.forEach((e)=>{
                             e.removeClass('square');
                         })
+                        p.append(`Ganó <b>${player2}</b><br>`);
                         playing = false;
                     }
                     else if(pointb[0] == true && pointb[1] == true && pointb[2] ==true)
@@ -472,6 +486,7 @@ $(document).ready(function(){
                         gridArr.forEach((e)=>{
                             e.removeClass('square');
                         })
+                        p.append(`Ganó <b>${player2}</b><br>`);
                         playing = false;
                     }
                     else if(pointb[0] == true && pointb[4] == true && pointb[8] ==true)
@@ -481,6 +496,7 @@ $(document).ready(function(){
                         gridArr.forEach((e)=>{
                             e.removeClass('square');
                         })
+                        p.append(`Ganó <b>${player2}</b><br>`);
                         playing = false;
                     }
                     else if(pointb[2] == true && pointb[4] == true && pointb[6] ==true)
@@ -490,6 +506,7 @@ $(document).ready(function(){
                         gridArr.forEach((e)=>{
                             e.removeClass('square');
                         })
+                        p.append(`Ganó <b>${player2}</b><br>`);
                         playing = false;
                     }
                 }
