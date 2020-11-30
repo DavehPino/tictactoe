@@ -1,5 +1,5 @@
 $(document).ready(function(){
-    setTimeout(function(){alert('Para jugar presiona Play')},800);
+    setTimeout(function(){alert('Para jugar presiona Play')},500);
     const play = $('#play');
     const restart = $('#restart');
     const draw = $('#draw');
