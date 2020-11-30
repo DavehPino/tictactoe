@@ -13,26 +13,20 @@ $(document).ready(function(){
     const grid8 = $('.grilla8');
     const grid9 = $('.grilla9');
     const gridArr = [grid, grid2, grid3, grid4, grid5, grid6, grid7, grid8, grid9]
-    let point1a = false;
-    let point2a = false;
-    let point3a = false;
-    let point4a = false;
-    let point5a = false;
-    let point6a = false;
-    let point7a = false;
-    let point8a = false;
-    let point9a = false;
-    let point1b = false;
-    let point2b = false;
-    let point3b = false;
-    let point4b = false;
-    let point5b = false;
-    let point6b = false;
-    let point7b = false;
-    let point8b = false;
-    let point9b = false;
-    let playing = false;
     const mark = [$('#picture'), $('#picture2'), $('#picture3'), $('#picture4'), $('#picture5'), $('#picture6'), $('#picture7'), $('#picture8'), $('#picture9'), $('#picture10'), $('#picture11'), $('#picture12'), $('#picture13'), $('#picture14'), $('#picture15'), $('#picture16'), $('#picture17'), $('#picture18')];
+    let pointa = [false, false, false, false, false, false, false, false, false];
+    let pointb = [false, false, false, false, false, false, false, false, false];
+    let prev = 0;
+    function points(){
+        for(i = 0; i < 9; i++)
+        {
+            pointa[i] = false;
+        }
+        for(i = 0; i < 9; i++)
+        {
+            pointb[i] = false;
+        }
+    }
 
     draw.click(function(){
         let conf = confirm('Está seguro que desea finalizar la partida en empate?');
@@ -58,24 +52,8 @@ $(document).ready(function(){
                 })
                 draw.removeAttr('disabled');
                 playing = true;
-                point1a = false;
-                point2a = false;
-                point3a = false;
-                point4a = false;
-                point5a = false;
-                point6a = false;
-                point7a = false;
-                point8a = false;
-                point9a = false;
-                point1b = false;
-                point2b = false;
-                point3b = false;
-                point4b = false;
-                point5b = false;
-                point6b = false;
-                point7b = false;
-                point8b = false;
-                point9b = false;
+                points();
+                prev = 0;
             }   
         }
     });
@@ -99,24 +77,8 @@ $(document).ready(function(){
             })
             draw.removeAttr('disabled');
             playing = true;
-            point1a = false;
-            point2a = false;
-            point3a = false;
-            point4a = false;
-            point5a = false;
-            point6a = false;
-            point7a = false;
-            point8a = false;
-            point9a = false;
-            point1b = false;
-            point2b = false;
-            point3b = false;
-            point4b = false;
-            point5b = false;
-            point6b = false;
-            point7b = false;
-            point8b = false;
-            point9b = false;
+            points();
+            prev = 0;
         }
     });
 
@@ -125,11 +87,20 @@ $(document).ready(function(){
         restart.removeAttr('disabled');
         draw.removeAttr('disabled');
         play.attr('disabled','');
-        alert('JUEGO INICIADO\nNORMAS: EMPIEZA EL CIRCULO\nEL PRIMER JUGADOR EN COMPLETAR UNA LINEA GANA\n\n                                             EMPEZAMOS!!');
+        let player = '';
+        let player2 = '';
+        while(player == '' || player == null)
+        {
+            player = prompt('Nombre player 1');
+        }
+        while(player2 == '' || player2 == null || player2 == player)
+        {
+            player2 = prompt('Nombre player 2');
+        }
+        alert('JUEGO INICIADO\nNORMAS: EMPIEZA '+player+' \nEL PRIMER JUGADOR EN COMPLETAR UNA LINEA GANA\n\n                                             EMPEZAMOS!!');
         gridArr.forEach((e)=>{
                 e.addClass('square');
         });
-        let prev = 0;
         grid.click(function(){
             if(grid.css('cursor') == 'pointer')
             {
@@ -137,7 +108,7 @@ $(document).ready(function(){
                 {
                     mark[0].removeClass('d-none')
                     prev = 1;
-                    point1a = true;
+                    pointa[0] = true;
                 }
                 else if(mark[0].css('display') != 'none' || mark[1].css('display') != 'none')
                 {
@@ -147,13 +118,13 @@ $(document).ready(function(){
                 {
                     mark[1].removeClass('d-none')
                     prev = 2;
-                    point1b = true;
+                    pointb[0] = true;
                 }
                 else if(prev == 2 && mark[0].css('display') == 'none' && mark[1].css('display') == 'none')
                 {
                     mark[0].removeClass('d-none')
                     prev = 1;
-                    point1a = true;
+                    pointa[0] = true;
                 }
             }
         });
@@ -164,7 +135,7 @@ $(document).ready(function(){
                 {
                     mark[2].removeClass('d-none');
                     prev = 1;
-                    point2a = true;
+                    pointa[1] = true;
                 }
                 else if(mark[2].css('display') != 'none' || mark[3].css('display') != 'none')
                 {
@@ -174,13 +145,13 @@ $(document).ready(function(){
                 {
                     mark[3].removeClass('d-none');
                     prev = 2; 
-                    point2b = true;
+                    pointb[1] = true;
                 }
                 else if(prev == 2 && mark[2].css('display') == 'none' && mark[3].css('display') == 'none')
                 {
                     mark[2].removeClass('d-none');
                     prev = 1; 
-                    point2a = true;
+                    pointa[1] = true;
                 }
             } 
         });
@@ -191,7 +162,7 @@ $(document).ready(function(){
                 {
                     mark[4].removeClass('d-none');
                     prev = 1;
-                    point3a = true;
+                    pointa[2] = true;
                 }
                 else if(mark[4].css('display') != 'none' || mark[5].css('display') != 'none')
                 {
@@ -201,13 +172,13 @@ $(document).ready(function(){
                 {
                     mark[5].removeClass('d-none');
                     prev = 2;
-                    point3b = true;
+                    pointb[2] = true;
                 }
                 else if(prev == 2 && mark[4].css('display') == 'none' && mark[5].css('display') == 'none')
                 {
                     mark[4].removeClass('d-none');
                     prev = 1;
-                    point3a = true;
+                    pointa[2] = true;
                 }
             }
         });
@@ -218,7 +189,7 @@ $(document).ready(function(){
                 {
                     mark[6].removeClass('d-none');
                     prev = 1;
-                    point4a = true;
+                    pointa[3] = true;
                 }
                 else if(mark[6].css('display') != 'none' || mark[7].css('display') != 'none')
                 {
@@ -228,13 +199,13 @@ $(document).ready(function(){
                 {
                     mark[7].removeClass('d-none');
                     prev = 2;
-                    point4b = true;
+                    pointb[3] = true;
                 }
                 else if(prev == 2 && mark[6].css('display') == 'none' && mark[7].css('display') == 'none')
                 {
                     mark[6].removeClass('d-none');
                     prev = 1; 
-                    point4a = true;          
+                    pointa[3] = true;          
                 }
             }
         });
@@ -245,7 +216,7 @@ $(document).ready(function(){
                 {
                     mark[8].removeClass('d-none');
                     prev = 1;
-                    point5a = true;           
+                    pointa[4] = true;           
                 }
                 else if(mark[8].css('display') != 'none' || mark[9].css('display') != 'none')
                 {
@@ -255,13 +226,13 @@ $(document).ready(function(){
                 {
                     mark[9].removeClass('d-none');
                     prev = 2;
-                    point5b = true;        
+                    pointb[4] = true;        
                 }
                 else if(prev == 2 && mark[8].css('display') == 'none' && mark[9].css('display') == 'none')
                 {
                     mark[8].removeClass('d-none');
                     prev = 1;
-                    point5a = true;           
+                    pointa[4] = true;           
                 }
             }
             
@@ -273,7 +244,7 @@ $(document).ready(function(){
                 {
                     mark[10].removeClass('d-none');
                     prev = 1;
-                    point6a = true;
+                    pointa[5] = true;
                 }
                 else if(mark[10].css('display') != 'none' || mark[11].css('display') != 'none')
                 {
@@ -283,13 +254,13 @@ $(document).ready(function(){
                 {
                     mark[11].removeClass('d-none');
                     prev = 2;
-                    point6b = true;
+                    pointb[5] = true;
                 }
                 else if(prev == 2 && mark[10].css('display') == 'none' && mark[11].css('display') == 'none')
                 {
                     mark[10].removeClass('d-none');
                     prev = 1; 
-                    point6a = true;            
+                    pointa[5] = true;            
                 }
             }
         });
@@ -300,7 +271,7 @@ $(document).ready(function(){
                 {
                     mark[12].removeClass('d-none');
                     prev = 1;
-                    point7a = true; 
+                    pointa[6] = true; 
                 }
                 else if(mark[12].css('display') != 'none' || mark[13].css('display') != 'none')
                 {
@@ -310,13 +281,13 @@ $(document).ready(function(){
                 {
                     mark[13].removeClass('d-none');
                     prev = 2; 
-                    point7b = true;             
+                    pointb[6] = true;             
                 }
                 else if(prev == 2 && mark[12].css('display') == 'none' && mark[13].css('display') == 'none')
                 {
                     mark[12].removeClass('d-none');
                     prev = 1;  
-                    point7a = true;              
+                    pointa[6] = true;              
                 }
             }    
         });
@@ -327,7 +298,7 @@ $(document).ready(function(){
                 {
                     mark[14].removeClass('d-none');
                     prev = 1;
-                    point8a = true;                  
+                    pointa[7] = true;                  
                 }
                 else if(mark[14].css('display') != 'none' || mark[15].css('display') != 'none')
                 {
@@ -337,13 +308,13 @@ $(document).ready(function(){
                 {
                     mark[15].removeClass('d-none');
                     prev = 2;
-                    point8b = true;                   
+                    pointb[7] = true;                   
                 }
                 else if(prev == 2 && mark[14].css('display') == 'none' && mark[15].css('display') == 'none')
                 {
                     mark[14].removeClass('d-none');
                     prev = 1;
-                    point8a = true;                  
+                    pointa[7] = true;                  
                 }
             } 
         });
@@ -354,7 +325,7 @@ $(document).ready(function(){
                 {
                     mark[16].removeClass('d-none');
                     prev = 1;
-                    point9a = true;             
+                    pointa[8] = true;             
                 }
                 else if(mark[16].css('display') != 'none' || mark[17].css('display') != 'none')
                 {
@@ -364,157 +335,157 @@ $(document).ready(function(){
                 {
                     mark[17].removeClass('d-none');
                     prev = 2;     
-                    point9b = true;              
+                    pointb[8] = true;              
                 }
                 else if(prev == 2 && mark[16].css('display') == 'none' && mark[17].css('display') == 'none')
                 {
                     mark[16].removeClass('d-none');
                     prev = 1;
-                    point9a = true;
+                    pointa[8] = true;
                 }
             }
         });
         gridArr.forEach((e)=>{
             e.click(function(){
                 if(playing == true){
-                    if(point1a == true && point4a == true && point7a == true)
+                    if(pointa[0] == true && pointa[3] == true && pointa[6] == true)
                     {
-                        setTimeout(function(){alert('GANA EL CIRCULO')},200);
+                        setTimeout(function(){alert('GANA '+player)},200);
                         draw.attr('disabled','');
                         gridArr.forEach((e)=>{
                             e.removeClass('square');
                         })
                         playing = false;
                     }
-                    else if(point2a == true && point5a == true && point8a ==true)
+                    else if(pointa[1] == true && pointa[4] == true && pointa[7] ==true)
                     {
-                        setTimeout(function(){alert('GANA EL CIRCULO')},200);
+                        setTimeout(function(){alert('GANA '+player)},200);
                         draw.attr('disabled','');
                         gridArr.forEach((e)=>{
                             e.removeClass('square');
                         })
                         playing = false;
                     }
-                    else if(point3a == true && point6a == true && point9a ==true)
+                    else if(pointa[2] == true && pointa[5] == true && pointa[8] ==true)
                     {
-                        setTimeout(function(){alert('GANA EL CIRCULO')},200);
+                        setTimeout(function(){alert('GANA '+player)},200);
                         draw.attr('disabled','');
                         gridArr.forEach((e)=>{
                             e.removeClass('square');
                         })
                         playing = false;
                     }
-                    else if(point4a == true && point5a == true && point6a ==true)
+                    else if(pointa[3] == true && pointa[4] == true && pointa[5] ==true)
                     {
-                        setTimeout(function(){alert('GANA EL CIRCULO')},200);
+                        setTimeout(function(){alert('GANA '+player)},200);
                         draw.attr('disabled','');
                         gridArr.forEach((e)=>{
                             e.removeClass('square');
                         })
                         playing = false;
                     }
-                    else if(point7a == true && point8a == true && point9a ==true)
+                    else if(pointa[6] == true && pointa[7] == true && pointa[8] ==true)
                     {
-                        setTimeout(function(){alert('GANA EL CIRCULO')},200);
+                        setTimeout(function(){alert('GANA '+player)},200);
                         draw.attr('disabled','');
                         gridArr.forEach((e)=>{
                             e.removeClass('square');
                         })
                         playing = false;
                     }
-                    else if(point1a == true && point2a == true && point3a ==true)
+                    else if(pointa[0] == true && pointa[1] == true && pointa[2] ==true)
                     {
-                        setTimeout(function(){alert('GANA EL CIRCULO')},200);
+                        setTimeout(function(){alert('GANA '+player)},200);
                         draw.attr('disabled','');
                         gridArr.forEach((e)=>{
                             e.removeClass('square');
                         })
                         playing = false;
                     }
-                    else if(point1a == true && point5a == true && point9a ==true)
+                    else if(pointa[0] == true && pointa[4] == true && pointa[8] ==true)
                     {
-                        setTimeout(function(){alert('GANA EL CIRCULO')},200);
+                        setTimeout(function(){alert('GANA '+player)},200);
                         draw.attr('disabled','');
                         gridArr.forEach((e)=>{
                             e.removeClass('square');
                         })
                         playing = false;
                     }
-                    else if(point3a == true && point5a == true && point7a ==true)
+                    else if(pointa[2] == true && pointa[4] == true && pointa[6] ==true)
                     {
-                        setTimeout(function(){alert('GANA EL CIRCULO')},200);
+                        setTimeout(function(){alert('GANA '+player)},200);
                         draw.attr('disabled','');
                         gridArr.forEach((e)=>{
                             e.removeClass('square');
                         })
                         playing = false;
                     }
-                    else if(point1b == true && point4b == true && point7b == true)
+                    else if(pointb[0] == true && pointb[3] == true && pointb[6] == true)
                     {
-                        setTimeout(function(){alert('GANA LA EQUIS')},200);
+                        setTimeout(function(){alert('GANA '+player2)},200);
                         draw.attr('disabled','');
                         gridArr.forEach((e)=>{
                             e.removeClass('square');
                         })
                         playing = false;
                     }
-                    else if(point2b == true && point5b == true && point8b ==true)
+                    else if(pointb[1] == true && pointb[4] == true && pointb[7] ==true)
                     {
-                        setTimeout(function(){alert('GANA LA EQUIS')},200);
+                        setTimeout(function(){alert('GANA '+player2)},200);
                         draw.attr('disabled','');
                         gridArr.forEach((e)=>{
                             e.removeClass('square');
                         })
                         playing = false;
                     }
-                    else if(point3b == true && point6b == true && point9b ==true)
+                    else if(pointb[2] == true && pointb[5] == true && pointb[8] ==true)
                     {
-                        setTimeout(function(){alert('GANA LA EQUIS')},200);
+                        setTimeout(function(){alert('GANA '+player2)},200);
                         draw.attr('disabled','');
                         gridArr.forEach((e)=>{
                             e.removeClass('square');
                         })
                         playing = false;
                     }
-                    else if(point4b == true && point5b == true && point6b ==true)
+                    else if(pointb[3] == true && pointb[4] == true && pointb[5] ==true)
                     {
-                        setTimeout(function(){alert('GANA LA EQUIS')},200);
+                        setTimeout(function(){alert('GANA '+player2)},200);
                         draw.attr('disabled','');
                         gridArr.forEach((e)=>{
                             e.removeClass('square');
                         })
                         playing = false;
                     }
-                    else if(point7b == true && point8b == true && point9b ==true)
+                    else if(pointb[6] == true && pointb[7] == true && pointb[8] ==true)
                     {
-                        setTimeout(function(){alert('GANA LA EQUIS')},200);
+                        setTimeout(function(){alert('GANA '+player2)},200);
                         draw.attr('disabled','');
                         gridArr.forEach((e)=>{
                             e.removeClass('square');
                         })
                         playing = false;
                     }
-                    else if(point1b == true && point2b == true && point3b ==true)
+                    else if(pointb[0] == true && pointb[1] == true && pointb[2] ==true)
                     {
-                        setTimeout(function(){alert('GANA LA EQUIS')},200);
+                        setTimeout(function(){alert('GANA '+player2)},200);
                         draw.attr('disabled','');
                         gridArr.forEach((e)=>{
                             e.removeClass('square');
                         })
                         playing = false;
                     }
-                    else if(point1b == true && point5b == true && point9b ==true)
+                    else if(pointb[0] == true && pointb[4] == true && pointb[8] ==true)
                     {
-                        setTimeout(function(){alert('GANA LA EQUIS')},200);
+                        setTimeout(function(){alert('GANA '+player2)},200);
                         draw.attr('disabled','');
                         gridArr.forEach((e)=>{
                             e.removeClass('square');
                         })
                         playing = false;
                     }
-                    else if(point3b == true && point5b == true && point7b ==true)
+                    else if(pointb[2] == true && pointb[4] == true && pointb[6] ==true)
                     {
-                        setTimeout(function(){alert('GANA LA EQUIS')},200);
+                        setTimeout(function(){alert('GANA '+player2)},200);
                         draw.attr('disabled','');
                         gridArr.forEach((e)=>{
                             e.removeClass('square');
