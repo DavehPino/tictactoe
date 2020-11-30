@@ -45,7 +45,9 @@ $(document).ready(function(){
                 e.removeClass('square');
             })
             p.append(`<b>TIED MATCH</b><br>`);
-            let rest = confirm('Do you want to restart the game?');
+            setTimeout(function()
+            {
+                let rest = confirm('Do you want to restart the game?');
             if(rest == true)
             {
                 alert('The game will restart');
@@ -63,6 +65,7 @@ $(document).ready(function(){
                 points();
                 prev = 0;
             }   
+            },100)
         }
     });
 
