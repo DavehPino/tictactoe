@@ -30,18 +30,18 @@ $(document).ready(function(){
     }
 
     draw.click(function(){
-        let conf = confirm('Está seguro que desea finalizar la partida en empate?');
+        let conf = confirm('Are you sure you want to end the game in a draw?');
         if(conf == true)
         {
             draw.attr('disabled','');
-            alert('La partida ha terminado en empate');
+            alert('The game has ended in a draw');
             gridArr.forEach((e)=>{
                 e.removeClass('square');
             })
-            let rest = confirm('Desea reiniciar el juego?');
+            let rest = confirm('Do you want to restart the game?');
             if(rest == true)
             {
-                alert('El juego se reiniciará');
+                alert('The game will restart');
                 mark.forEach((e)=>{
                     if(e.css('display') != 'none')
                     {
@@ -60,10 +60,10 @@ $(document).ready(function(){
     });
 
     restart.click(function(){
-        let conf = confirm('Está seguro que desea reiniciar el juego?');
+        let conf = confirm('Are you sure you want to restart the game?');
         if(conf == true)
         {
-            alert('El juego se reiniciará');
+            alert('The game will restart');
             mark.forEach((e)=>{
                 if(e.css('display') != 'none')
                 {
@@ -92,13 +92,13 @@ $(document).ready(function(){
         let player2 = '';
         while(player == '' || player == null)
         {
-            player = prompt('Nombre player 1');
+            player = prompt('Name player 1');
         }
         while(player2 == '' || player2 == null || player2 == player)
         {
-            player2 = prompt('Nombre player 2');
+            player2 = prompt('Name player 2');
         }
-        alert('JUEGO INICIADO\nEMPIEZA '+player+' \n\n                                             EMPEZAMOS!!');
+        alert('GAME INITIATING\nBEGINS '+player+' \n\n                                             GAME STARTED!!');
         gridArr.forEach((e)=>{
                 e.addClass('square');
         });
@@ -113,7 +113,7 @@ $(document).ready(function(){
                 }
                 else if(mark[0].css('display') != 'none' || mark[1].css('display') != 'none')
                 {
-                    alert('Ya jugaste en esta casilla');
+                    alert('You already played here!');
                 }
                 else if(prev == 1 && mark[0].css('display') == 'none' && mark[1].css('display') == 'none')
                 {
@@ -140,7 +140,7 @@ $(document).ready(function(){
                 }
                 else if(mark[2].css('display') != 'none' || mark[3].css('display') != 'none')
                 {
-                    alert('Ya jugaste en esta casilla');
+                    alert('You already played here!');
                 }
                 else if(prev == 1 && mark[2].css('display') == 'none' && mark[3].css('display') == 'none')
                 {
@@ -167,7 +167,7 @@ $(document).ready(function(){
                 }
                 else if(mark[4].css('display') != 'none' || mark[5].css('display') != 'none')
                 {
-                    alert('Ya jugaste en esta casilla');
+                    alert('You already played here!');
                 }
                 else if(prev == 1 && mark[4].css('display') == 'none' && mark[5].css('display') == 'none')
                 {
@@ -194,7 +194,7 @@ $(document).ready(function(){
                 }
                 else if(mark[6].css('display') != 'none' || mark[7].css('display') != 'none')
                 {
-                    alert('Ya jugaste en esta casilla');
+                    alert('You already played here!');
                 }
                 else if(prev == 1 && mark[6].css('display') == 'none' && mark[7].css('display') == 'none')
                 {
@@ -221,7 +221,7 @@ $(document).ready(function(){
                 }
                 else if(mark[8].css('display') != 'none' || mark[9].css('display') != 'none')
                 {
-                    alert('Ya jugaste en esta casilla');
+                    alert('You already played here!');
                 }
                 else if(prev == 1 && mark[8].css('display') == 'none' && mark[9].css('display') == 'none')
                 {
@@ -249,7 +249,7 @@ $(document).ready(function(){
                 }
                 else if(mark[10].css('display') != 'none' || mark[11].css('display') != 'none')
                 {
-                    alert('Ya jugaste en esta casilla');
+                    alert('You already played here!');
                 }
                 else if(prev == 1 && mark[10].css('display') == 'none' && mark[11].css('display') == 'none')
                 {
@@ -276,7 +276,7 @@ $(document).ready(function(){
                 }
                 else if(mark[12].css('display') != 'none' || mark[13].css('display') != 'none')
                 {
-                    alert('Ya jugaste en esta casilla');
+                    alert('You already played here!');
                 }
                 else if(prev == 1 && mark[12].css('display') == 'none' && mark[13].css('display') == 'none')
                 {
@@ -303,7 +303,7 @@ $(document).ready(function(){
                 }
                 else if(mark[14].css('display') != 'none' || mark[15].css('display') != 'none')
                 {
-                    alert('Ya jugaste en esta casilla');
+                    alert('You already played here!');
                 }
                 else if(prev == 1 && mark[14].css('display') == 'none' && mark[15].css('display') == 'none')
                 {
@@ -330,7 +330,7 @@ $(document).ready(function(){
                 }
                 else if(mark[16].css('display') != 'none' || mark[17].css('display') != 'none')
                 {
-                    alert('Ya jugaste en esta casilla');
+                    alert('You already played here!');
                 }
                 else if(prev == 1 && mark[16].css('display') == 'none' && mark[17].css('display') == 'none')
                 {
@@ -351,162 +351,162 @@ $(document).ready(function(){
                 if(playing == true){
                     if(pointa[0] == true && pointa[3] == true && pointa[6] == true)
                     {
-                        setTimeout(function(){alert('GANA '+player)},200);
+                        setTimeout(function(){alert(player+' WINS')},200);
                         draw.attr('disabled','');
                         gridArr.forEach((e)=>{
                             e.removeClass('square');
                         })
-                        p.append(`Ganó <b>${player}</b><br>`);
+                        p.append(`<b>${player}</b> Won<br>`);
                         playing = false;
                     }
                     else if(pointa[1] == true && pointa[4] == true && pointa[7] ==true)
                     {
-                        setTimeout(function(){alert('GANA '+player)},200);
+                        setTimeout(function(){alert(player+' WINS')},200);
                         draw.attr('disabled','');
                         gridArr.forEach((e)=>{
                             e.removeClass('square');
                         })
-                        p.append(`Ganó <b>${player}</b><br>`);
+                        p.append(`<b>${player}</b> Won<br>`);
                         playing = false;
                     }
                     else if(pointa[2] == true && pointa[5] == true && pointa[8] ==true)
                     {
-                        setTimeout(function(){alert('GANA '+player)},200);
+                        setTimeout(function(){alert(player+' WINS')},200);
                         draw.attr('disabled','');
                         gridArr.forEach((e)=>{
                             e.removeClass('square');
                         })
-                        p.append(`Ganó <b>${player}</b><br>`);
+                        p.append(`<b>${player}</b> Won<br>`);
                         playing = false;
                     }
                     else if(pointa[3] == true && pointa[4] == true && pointa[5] ==true)
                     {
-                        setTimeout(function(){alert('GANA '+player)},200);
+                        setTimeout(function(){alert(player+' WINS')},200);
                         draw.attr('disabled','');
                         gridArr.forEach((e)=>{
                             e.removeClass('square');
                         })
-                        p.append(`Ganó <b>${player}</b><br>`);
+                        p.append(`<b>${player}</b> Won<br>`);
                         playing = false;
                     }
                     else if(pointa[6] == true && pointa[7] == true && pointa[8] ==true)
                     {
-                        setTimeout(function(){alert('GANA '+player)},200);
+                        setTimeout(function(){alert(player+' WINS')},200);
                         draw.attr('disabled','');
                         gridArr.forEach((e)=>{
                             e.removeClass('square');
                         })
-                        p.append(`Ganó <b>${player}</b><br>`);
+                        p.append(`<b>${player}</b> Won<br>`);
                         playing = false;
                     }
                     else if(pointa[0] == true && pointa[1] == true && pointa[2] ==true)
                     {
-                        setTimeout(function(){alert('GANA '+player)},200);
+                        setTimeout(function(){alert(player+' WINS')},200);
                         draw.attr('disabled','');
                         gridArr.forEach((e)=>{
                             e.removeClass('square');
                         })
-                        p.append(`Ganó <b>${player}</b><br>`);
+                        p.append(`<b>${player}</b> Won<br>`);
                         playing = false;
                     }
                     else if(pointa[0] == true && pointa[4] == true && pointa[8] ==true)
                     {
-                        setTimeout(function(){alert('GANA '+player)},200);
+                        setTimeout(function(){alert(player+' WINS')},200);
                         draw.attr('disabled','');
                         gridArr.forEach((e)=>{
                             e.removeClass('square');
                         })
-                        p.append(`Ganó <b>${player}</b><br>`);
+                        p.append(`<b>${player}</b> Won<br>`);
                         playing = false;
                     }
                     else if(pointa[2] == true && pointa[4] == true && pointa[6] ==true)
                     {
-                        setTimeout(function(){alert('GANA '+player)},200);
+                        setTimeout(function(){alert(player+' WINS')},200);
                         draw.attr('disabled','');
                         gridArr.forEach((e)=>{
                             e.removeClass('square');
                         })
-                        p.append(`Ganó <b>${player}</b><br>`);
+                        p.append(`<b>${player}</b> Won<br>`);
                         playing = false;
                     }
                     else if(pointb[0] == true && pointb[3] == true && pointb[6] == true)
                     {
-                        setTimeout(function(){alert('GANA '+player2)},200);
+                        setTimeout(function(){alert(player2+' WINS')},200);
                         draw.attr('disabled','');
                         gridArr.forEach((e)=>{
                             e.removeClass('square');
                         })
-                        p.append(`Ganó <b>${player2}</b><br>`);
+                        p.append(`<b>${player2}</b> Won<br>`);
                         playing = false;
                     }
                     else if(pointb[1] == true && pointb[4] == true && pointb[7] ==true)
                     {
-                        setTimeout(function(){alert('GANA '+player2)},200);
+                        setTimeout(function(){alert(player2+' WINS')},200);
                         draw.attr('disabled','');
                         gridArr.forEach((e)=>{
                             e.removeClass('square');
                         })
-                        p.append(`Ganó <b>${player2}</b><br>`);
+                        p.append(`<b>${player2}</b> Won<br>`);
                         playing = false;
                     }
                     else if(pointb[2] == true && pointb[5] == true && pointb[8] ==true)
                     {
-                        setTimeout(function(){alert('GANA '+player2)},200);
+                        setTimeout(function(){alert(player2+' WINS')},200);
                         draw.attr('disabled','');
                         gridArr.forEach((e)=>{
                             e.removeClass('square');
                         })
-                        p.append(`Ganó <b>${player2}</b><br>`);
+                        p.append(`<b>${player2}</b> Won<br>`);
                         playing = false;
                     }
                     else if(pointb[3] == true && pointb[4] == true && pointb[5] ==true)
                     {
-                        setTimeout(function(){alert('GANA '+player2)},200);
+                        setTimeout(function(){alert(player2+' WINS')},200);
                         draw.attr('disabled','');
                         gridArr.forEach((e)=>{
                             e.removeClass('square');
                         })
-                        p.append(`Ganó <b>${player2}</b><br>`);
+                        p.append(`<b>${player2}</b> Won<br>`);
                         playing = false;
                     }
                     else if(pointb[6] == true && pointb[7] == true && pointb[8] ==true)
                     {
-                        setTimeout(function(){alert('GANA '+player2)},200);
+                        setTimeout(function(){alert(player2+' WINS')},200);
                         draw.attr('disabled','');
                         gridArr.forEach((e)=>{
                             e.removeClass('square');
                         })
-                        p.append(`Ganó <b>${player2}</b><br>`);
+                        p.append(`<b>${player2}</b> Won<br>`);
                         playing = false;
                     }
                     else if(pointb[0] == true && pointb[1] == true && pointb[2] ==true)
                     {
-                        setTimeout(function(){alert('GANA '+player2)},200);
+                        setTimeout(function(){alert(player2+' WINS')},200);
                         draw.attr('disabled','');
                         gridArr.forEach((e)=>{
                             e.removeClass('square');
                         })
-                        p.append(`Ganó <b>${player2}</b><br>`);
+                        p.append(`<b>${player2}</b> Won<br>`);
                         playing = false;
                     }
                     else if(pointb[0] == true && pointb[4] == true && pointb[8] ==true)
                     {
-                        setTimeout(function(){alert('GANA '+player2)},200);
+                        setTimeout(function(){alert(player2+' WINS')},200);
                         draw.attr('disabled','');
                         gridArr.forEach((e)=>{
                             e.removeClass('square');
                         })
-                        p.append(`Ganó <b>${player2}</b><br>`);
+                        p.append(`<b>${player2}</b> Won<br>`);
                         playing = false;
                     }
                     else if(pointb[2] == true && pointb[4] == true && pointb[6] ==true)
                     {
-                        setTimeout(function(){alert('GANA '+player2)},200);
+                        setTimeout(function(){alert(player2+' WINS')},200);
                         draw.attr('disabled','');
                         gridArr.forEach((e)=>{
                             e.removeClass('square');
                         })
-                        p.append(`Ganó <b>${player2}</b><br>`);
+                        p.append(`<b>${player2}</b> Won<br>`);
                         playing = false;
                     }
                 }
