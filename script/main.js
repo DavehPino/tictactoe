@@ -17,15 +17,21 @@ $(document).ready(function(){
     const mark = [$('#picture'), $('#picture2'), $('#picture3'), $('#picture4'), $('#picture5'), $('#picture6'), $('#picture7'), $('#picture8'), $('#picture9'), $('#picture10'), $('#picture11'), $('#picture12'), $('#picture13'), $('#picture14'), $('#picture15'), $('#picture16'), $('#picture17'), $('#picture18')];
     let pointa = [false, false, false, false, false, false, false, false, false];
     let pointb = [false, false, false, false, false, false, false, false, false];
+    let gridOn = [false, false, false, false, false, false, false, false, false];
     let prev = 0;
+    let acc = 0;
     function points(){
-        for(i = 0; i < 9; i++)
+        for(let i = 0; i < 9; i++)
         {
             pointa[i] = false;
         }
-        for(i = 0; i < 9; i++)
+        for(let i = 0; i < 9; i++)
         {
             pointb[i] = false;
+        }
+        for(let i = 0; i < 9; i++)
+        {
+            gridOn[i] = false;
         }
     }
 
@@ -38,6 +44,7 @@ $(document).ready(function(){
             gridArr.forEach((e)=>{
                 e.removeClass('square');
             })
+            p.append(`<b>TIED MATCH</b><br>`);
             let rest = confirm('Do you want to restart the game?');
             if(rest == true)
             {
@@ -110,6 +117,7 @@ $(document).ready(function(){
                     mark[0].removeClass('d-none')
                     prev = 1;
                     pointa[0] = true;
+                    gridOn[0] = true;
                 }
                 else if(mark[0].css('display') != 'none' || mark[1].css('display') != 'none')
                 {
@@ -120,12 +128,14 @@ $(document).ready(function(){
                     mark[1].removeClass('d-none')
                     prev = 2;
                     pointb[0] = true;
+                    gridOn[0] = true;
                 }
                 else if(prev == 2 && mark[0].css('display') == 'none' && mark[1].css('display') == 'none')
                 {
                     mark[0].removeClass('d-none')
                     prev = 1;
                     pointa[0] = true;
+                    gridOn[0] = true;
                 }
             }
         });
@@ -137,6 +147,7 @@ $(document).ready(function(){
                     mark[2].removeClass('d-none');
                     prev = 1;
                     pointa[1] = true;
+                    gridOn[1] = true;
                 }
                 else if(mark[2].css('display') != 'none' || mark[3].css('display') != 'none')
                 {
@@ -147,12 +158,14 @@ $(document).ready(function(){
                     mark[3].removeClass('d-none');
                     prev = 2; 
                     pointb[1] = true;
+                    gridOn[1] = true;
                 }
                 else if(prev == 2 && mark[2].css('display') == 'none' && mark[3].css('display') == 'none')
                 {
                     mark[2].removeClass('d-none');
                     prev = 1; 
                     pointa[1] = true;
+                    gridOn[1] = true;
                 }
             } 
         });
@@ -164,6 +177,7 @@ $(document).ready(function(){
                     mark[4].removeClass('d-none');
                     prev = 1;
                     pointa[2] = true;
+                    gridOn[2] = true;
                 }
                 else if(mark[4].css('display') != 'none' || mark[5].css('display') != 'none')
                 {
@@ -174,12 +188,14 @@ $(document).ready(function(){
                     mark[5].removeClass('d-none');
                     prev = 2;
                     pointb[2] = true;
+                    gridOn[2] = true;
                 }
                 else if(prev == 2 && mark[4].css('display') == 'none' && mark[5].css('display') == 'none')
                 {
                     mark[4].removeClass('d-none');
                     prev = 1;
                     pointa[2] = true;
+                    gridOn[2] = true;
                 }
             }
         });
@@ -191,6 +207,7 @@ $(document).ready(function(){
                     mark[6].removeClass('d-none');
                     prev = 1;
                     pointa[3] = true;
+                    gridOn[3] = true;
                 }
                 else if(mark[6].css('display') != 'none' || mark[7].css('display') != 'none')
                 {
@@ -201,12 +218,14 @@ $(document).ready(function(){
                     mark[7].removeClass('d-none');
                     prev = 2;
                     pointb[3] = true;
+                    gridOn[3] = true;
                 }
                 else if(prev == 2 && mark[6].css('display') == 'none' && mark[7].css('display') == 'none')
                 {
                     mark[6].removeClass('d-none');
                     prev = 1; 
-                    pointa[3] = true;          
+                    pointa[3] = true;
+                    gridOn[3] = true;          
                 }
             }
         });
@@ -217,7 +236,8 @@ $(document).ready(function(){
                 {
                     mark[8].removeClass('d-none');
                     prev = 1;
-                    pointa[4] = true;           
+                    pointa[4] = true; 
+                    gridOn[4] = true;          
                 }
                 else if(mark[8].css('display') != 'none' || mark[9].css('display') != 'none')
                 {
@@ -227,13 +247,15 @@ $(document).ready(function(){
                 {
                     mark[9].removeClass('d-none');
                     prev = 2;
-                    pointb[4] = true;        
+                    pointb[4] = true;
+                    gridOn[4] = true;   
                 }
                 else if(prev == 2 && mark[8].css('display') == 'none' && mark[9].css('display') == 'none')
                 {
                     mark[8].removeClass('d-none');
                     prev = 1;
-                    pointa[4] = true;           
+                    pointa[4] = true;
+                    gridOn[4] = true;          
                 }
             }
             
@@ -246,6 +268,7 @@ $(document).ready(function(){
                     mark[10].removeClass('d-none');
                     prev = 1;
                     pointa[5] = true;
+                    gridOn[5] = true;
                 }
                 else if(mark[10].css('display') != 'none' || mark[11].css('display') != 'none')
                 {
@@ -256,12 +279,14 @@ $(document).ready(function(){
                     mark[11].removeClass('d-none');
                     prev = 2;
                     pointb[5] = true;
+                    gridOn[5] = true;
                 }
                 else if(prev == 2 && mark[10].css('display') == 'none' && mark[11].css('display') == 'none')
                 {
                     mark[10].removeClass('d-none');
                     prev = 1; 
-                    pointa[5] = true;            
+                    pointa[5] = true;
+                    gridOn[5] = true;            
                 }
             }
         });
@@ -272,7 +297,8 @@ $(document).ready(function(){
                 {
                     mark[12].removeClass('d-none');
                     prev = 1;
-                    pointa[6] = true; 
+                    pointa[6] = true;
+                    gridOn[6] = true; 
                 }
                 else if(mark[12].css('display') != 'none' || mark[13].css('display') != 'none')
                 {
@@ -282,13 +308,15 @@ $(document).ready(function(){
                 {
                     mark[13].removeClass('d-none');
                     prev = 2; 
-                    pointb[6] = true;             
+                    pointb[6] = true;
+                    gridOn[6] = true;           
                 }
                 else if(prev == 2 && mark[12].css('display') == 'none' && mark[13].css('display') == 'none')
                 {
                     mark[12].removeClass('d-none');
                     prev = 1;  
-                    pointa[6] = true;              
+                    pointa[6] = true;
+                    gridOn[6] = true;              
                 }
             }    
         });
@@ -299,7 +327,8 @@ $(document).ready(function(){
                 {
                     mark[14].removeClass('d-none');
                     prev = 1;
-                    pointa[7] = true;                  
+                    pointa[7] = true;
+                    gridOn[7] = true;                  
                 }
                 else if(mark[14].css('display') != 'none' || mark[15].css('display') != 'none')
                 {
@@ -309,13 +338,15 @@ $(document).ready(function(){
                 {
                     mark[15].removeClass('d-none');
                     prev = 2;
-                    pointb[7] = true;                   
+                    pointb[7] = true;
+                    gridOn[7] = true;                   
                 }
                 else if(prev == 2 && mark[14].css('display') == 'none' && mark[15].css('display') == 'none')
                 {
                     mark[14].removeClass('d-none');
                     prev = 1;
-                    pointa[7] = true;                  
+                    pointa[7] = true;
+                    gridOn[7] = true;                  
                 }
             } 
         });
@@ -326,7 +357,8 @@ $(document).ready(function(){
                 {
                     mark[16].removeClass('d-none');
                     prev = 1;
-                    pointa[8] = true;             
+                    pointa[8] = true;
+                    gridOn[8] = true;            
                 }
                 else if(mark[16].css('display') != 'none' || mark[17].css('display') != 'none')
                 {
@@ -336,20 +368,60 @@ $(document).ready(function(){
                 {
                     mark[17].removeClass('d-none');
                     prev = 2;     
-                    pointb[8] = true;              
+                    pointb[8] = true;
+                    gridOn[8] = true;             
                 }
                 else if(prev == 2 && mark[16].css('display') == 'none' && mark[17].css('display') == 'none')
                 {
                     mark[16].removeClass('d-none');
                     prev = 1;
                     pointa[8] = true;
+                    gridOn[8] = true;
                 }
             }
         });
         gridArr.forEach((e)=>{
             e.click(function(){
-                if(playing == true){
-                    if(pointa[0] == true && pointa[3] == true && pointa[6] == true)
+                if(playing == true)
+                {   
+                    acc = 0;
+                    gridOn.forEach((e)=>{
+                        if(e == true)
+                        {
+                            acc = acc + 1;
+                        }
+                    })
+                    if(acc == 9)
+                    {
+                        p.append(`<b>TIED MATCH</b><br>`);
+                        setTimeout(function()
+                        {
+                            draw.attr('disabled','');
+                            alert('The game has ended in a draw');
+                            gridArr.forEach((e)=>{
+                                e.removeClass('square');
+                            })
+                            let rest = confirm('Do you want to restart the game?');
+                            if(rest == true)
+                            {
+                                alert('The game will restart');
+                                mark.forEach((e)=>{
+                                    if(e.css('display') != 'none')
+                                    {
+                                        e.addClass('d-none');
+                                    }
+                                });
+                                gridArr.forEach((e)=>{
+                                    e.addClass('square');
+                                })
+                                draw.removeAttr('disabled');
+                                playing = true;
+                                points();
+                                prev = 0;
+                            }
+                        },100)   
+                    }
+                    else if(pointa[0] == true && pointa[3] == true && pointa[6] == true)
                     {
                         setTimeout(function(){alert(player+' WINS')},200);
                         draw.attr('disabled','');
