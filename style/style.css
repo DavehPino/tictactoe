@@ -6,10 +6,6 @@ img{
     height: 100%;
     object-fit: contain;
 }
-.py-6{
-    padding-top: 13.9px!important;
-    padding-bottom: 13.9px!important;
-}
 .square{
     cursor: pointer;
 }
