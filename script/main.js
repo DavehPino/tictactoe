@@ -43,7 +43,7 @@ $(document).ready(function(){
             gridArr.forEach((e)=>{
                 e.removeClass('square');
             })
-            p.append(`<b>TIED MATCH</b><br>`);
+            p.append(`TIED MATCH<br>`);
             setTimeout(function()
             {
                 let rest = confirm('Do you want to restart the game?');
@@ -395,7 +395,7 @@ $(document).ready(function(){
                     })
                     if(acc == 9)
                     {
-                        p.append(`<b>TIED MATCH</b><br>`);
+                        p.append(`TIED MATCH<br>`);
                         setTimeout(function()
                         {
                             draw.attr('disabled','');
