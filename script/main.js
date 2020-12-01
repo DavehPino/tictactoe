@@ -393,37 +393,7 @@ $(document).ready(function(){
                             acc = acc + 1;
                         }
                     })
-                    if(acc == 9)
-                    {
-                        p.append(`TIED MATCH<br>`);
-                        setTimeout(function()
-                        {
-                            draw.attr('disabled','');
-                            alert('The game has ended in a draw');
-                            gridArr.forEach((e)=>{
-                                e.removeClass('square');
-                            })
-                            let rest = confirm('Do you want to restart the game?');
-                            if(rest == true)
-                            {
-                                alert('The game will restart');
-                                mark.forEach((e)=>{
-                                    if(e.css('display') != 'none')
-                                    {
-                                        e.addClass('d-none');
-                                    }
-                                });
-                                gridArr.forEach((e)=>{
-                                    e.addClass('square');
-                                })
-                                draw.removeAttr('disabled');
-                                playing = true;
-                                points();
-                                prev = 0;
-                            }
-                        },100)   
-                    }
-                    else if(pointa[0] == true && pointa[3] == true && pointa[6] == true)
+                    if(pointa[0] == true && pointa[3] == true && pointa[6] == true)
                     {
                         setTimeout(function(){alert(player+' WINS')},200);
                         draw.attr('disabled','');
@@ -582,6 +552,36 @@ $(document).ready(function(){
                         })
                         p.append(`<b>${player2}</b> Won<br>`);
                         playing = false;
+                    }
+                    else if(acc == 9)
+                    {
+                        p.append(`TIED MATCH<br>`);
+                        setTimeout(function()
+                        {
+                            draw.attr('disabled','');
+                            alert('The game has ended in a draw');
+                            gridArr.forEach((e)=>{
+                                e.removeClass('square');
+                            })
+                            let rest = confirm('Do you want to restart the game?');
+                            if(rest == true)
+                            {
+                                alert('The game will restart');
+                                mark.forEach((e)=>{
+                                    if(e.css('display') != 'none')
+                                    {
+                                        e.addClass('d-none');
+                                    }
+                                });
+                                gridArr.forEach((e)=>{
+                                    e.addClass('square');
+                                })
+                                draw.removeAttr('disabled');
+                                playing = true;
+                                points();
+                                prev = 0;
+                            }
+                        },100)   
                     }
                 }
             })
