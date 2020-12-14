@@ -553,7 +553,7 @@ $(document).ready(function(){
                         p.append(`<b>${player2}</b> Won<br>`);
                         playing = false;
                     }
-                    else if(acc == 9)
+                    else if(acc == 9 && playing == true)
                     {
                         p.append(`TIED MATCH<br>`);
                         setTimeout(function()
@@ -581,6 +581,7 @@ $(document).ready(function(){
                                 points();
                                 prev = 0;
                             }
+                            playing = false;
                         },100)   
                     }
                 }
