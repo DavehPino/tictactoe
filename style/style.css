@@ -1,5 +1,7 @@
 body{
     background-image: url(../resources/wallpaper.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 img{
     width: 100%;
