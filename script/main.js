@@ -23,7 +23,7 @@ $(document).ready(function(){
     let player2 = '';
 
     // POINTS RESET FUNCTION
-    const points = ()=>{
+    const pointsReset = ()=>{
         for(let i = 0; i < 9; i++)
         {
             pointa[i] = false;
@@ -32,25 +32,6 @@ $(document).ready(function(){
         }
     }
 
-
-    // DRAW GAME FUNCTION
-
-        draw.click(function(){
-            let conf = confirm('Are you sure you want to end the game in a draw?');
-            if(conf)
-            {
-                draw.attr('disabled','');
-                alert('The game has ended in a draw');
-                gridArr.forEach((e)=>{
-                    e.removeClass('square');
-                })
-                p.append(`TIED MATCH<br>`);
-                setTimeout(function()
-                {
-                    restarting(true);
-                },100)
-            }
-        });
     
     // RESTART GAME FUNCTION
     const restarting = (started)=>{
@@ -64,8 +45,7 @@ $(document).ready(function(){
         else
         {
             conf = confirm('Are you sure you want to restart the game?');
-        }
-        if(conf)
+            if(conf)
         {
             alert('The game will restart');
             mark.forEach((e)=>{
@@ -82,11 +62,31 @@ $(document).ready(function(){
             })
             draw.removeAttr('disabled');
             playing = true;
-            points();
+            pointsReset();
             prev = 0;
         }
+        }
+        
 
     }   
+
+    // DRAW GAME FUNCTION
+    draw.click(function(){
+        let conf = confirm('Are you sure you want to end the game in a draw?');
+        if(conf)
+        {
+            draw.attr('disabled','');
+            alert('The game has ended in a draw');
+            gridArr.forEach((e)=>{
+                e.removeClass('square');
+            })
+            p.append(`TIED MATCH<br>`);
+            setTimeout(function()
+            {
+                restarting(true);
+            },100)
+        }
+    });
 
     // RESTART BUTTON FUNCTION
     restart.click(function(){
@@ -103,7 +103,7 @@ $(document).ready(function(){
         play.attr('disabled','');
 
         // POINTING GRIDS FUNCTION
-        const gridFx = (casilla, i, j, k)=>{
+        const handlerPoints = (casilla, i, j, k)=>{
             if(casilla.css('cursor') == 'pointer')
             {
                 if(prev == 0 && mark[i].css('display') == 'none' && mark[j].css('display') == 'none')
@@ -153,31 +153,31 @@ $(document).ready(function(){
         
 
         grid.click(function(){
-            gridFx(grid, 0, 1, 0);
+            handlerPoints(grid, 0, 1, 0);
         });
         grid2.click(function(){
-            gridFx(grid2, 2, 3, 1);
+            handlerPoints(grid2, 2, 3, 1);
         });
         grid3.click(function(){
-            gridFx(grid3, 4, 5, 2);
+            handlerPoints(grid3, 4, 5, 2);
         });
         grid4.click(function(){
-            gridFx(grid4, 6, 7, 3);
+            handlerPoints(grid4, 6, 7, 3);
         });
         grid5.click(function(){
-            gridFx(grid4, 8, 9, 4);            
+            handlerPoints(grid4, 8, 9, 4);            
         });
         grid6.click(function(){
-            gridFx(grid6, 10, 11, 5);
+            handlerPoints(grid6, 10, 11, 5);
         });
         grid7.click(function(){
-            gridFx(grid7, 12, 13, 6);
+            handlerPoints(grid7, 12, 13, 6);
         });
         grid8.click(function(){
-            gridFx(grid8, 14, 15, 7);
+            handlerPoints(grid8, 14, 15, 7);
         });
         grid9.click(function(){
-            gridFx(grid9, 16, 17, 8);
+            handlerPoints(grid9, 16, 17, 8);
         });
 
         // FUNCTION TO CHECK POINTS, IT WILL STOP THE GAME ONCE IT'S OVER 
@@ -187,8 +187,8 @@ $(document).ready(function(){
                 if(playing)
                 {   
 
-                    // ADDING POINTS FOR PLAYER 1 FUNCTION
-                    const punctuationA = ( i, j, k, pName)=>{
+                    // ADDING VICTORY FOR PLAYER 1 FUNCTION
+                    const winnerA = ( i, j, k, pName)=>{
                         if(pointa[i] == true && pointa[j] == true && pointa[k] == true)
                         {
                             setTimeout(function(){alert(pName+' WINS')},200);
@@ -202,7 +202,7 @@ $(document).ready(function(){
                     }  
 
                     // ADDING POINTS FOR PLAYER 2 FUNCTION  
-                    const punctuationB = ( i, j, k, pName)=>{
+                    const winnerB = ( i, j, k, pName)=>{
                         if(pointb[i] == true && pointb[j] == true && pointb[k] == true)
                         {
                             setTimeout(function(){alert(pName+' WINS')},200);
@@ -222,22 +222,22 @@ $(document).ready(function(){
                         }
                     })
          
-                    punctuationA(0, 3, 6, player);
-                    punctuationA(1, 4, 7, player);
-                    punctuationA(2, 5, 8, player);
-                    punctuationA(3, 4, 5, player);
-                    punctuationA(6, 7, 8, player);
-                    punctuationA(0, 1, 2, player);
-                    punctuationA(0, 4, 8, player);
-                    punctuationA(2, 4, 6, player);
-                    punctuationB(0, 3, 6, player2);
-                    punctuationB(1, 4, 7, player2);
-                    punctuationB(2, 5, 8, player2);
-                    punctuationB(3, 4, 5, player2);
-                    punctuationB(6, 7, 8, player2);
-                    punctuationB(0, 1, 2, player2);
-                    punctuationB(0, 4, 8, player2);
-                    punctuationB(2, 4, 6, player2);
+                    winnerA(0, 3, 6, player);
+                    winnerA(1, 4, 7, player);
+                    winnerA(2, 5, 8, player);
+                    winnerA(3, 4, 5, player);
+                    winnerA(6, 7, 8, player);
+                    winnerA(0, 1, 2, player);
+                    winnerA(0, 4, 8, player);
+                    winnerA(2, 4, 6, player);
+                    winnerB(0, 3, 6, player2);
+                    winnerB(1, 4, 7, player2);
+                    winnerB(2, 5, 8, player2);
+                    winnerB(3, 4, 5, player2);
+                    winnerB(6, 7, 8, player2);
+                    winnerB(0, 1, 2, player2);
+                    winnerB(0, 4, 8, player2);
+                    winnerB(2, 4, 6, player2);
                 
                     if(acc == 9 && playing)
                     {
@@ -259,4 +259,3 @@ $(document).ready(function(){
     });
     
 });
-
