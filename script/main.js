@@ -45,7 +45,8 @@ $(document).ready(function(){
         else
         {
             conf = confirm('Are you sure you want to restart the game?');
-            if(conf)
+        }
+        if(conf)
         {
             alert('The game will restart');
             mark.forEach((e)=>{
@@ -65,9 +66,6 @@ $(document).ready(function(){
             pointsReset();
             prev = 0;
         }
-        }
-        
-
     }   
 
     // DRAW GAME FUNCTION
